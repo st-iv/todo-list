@@ -7,7 +7,7 @@ const TodoList = ({todos}) => {
     const elements = todos.map((item, key) => {
         return (
                 <li key={key} className="list-group-item">
-                    <TodoListItem {...item} />
+                    <TodoListItem {...item} onDeleted={() => console.log('del')}/>
                 </li>
             )
     })
