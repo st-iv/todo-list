@@ -25,7 +25,7 @@ export default class App extends Component {
 
             const newArray = [
                 ...todoData.slice(0, idx),
-                ...todoData.slice(idx+1)
+                ...todoData.slice(idx + 1)
             ]
 
             return {
@@ -35,12 +35,25 @@ export default class App extends Component {
     }
 
     addItem = (text) => {
+        //generate id
         const newItem = {
             label: text,
             important: false,
-            id: this.maxId
+            id: this.maxId++
         }
+
+        this.setState(({todoData}) => {
+            const newArr = [
+                ...todoData,
+                newItem
+            ]
+
+            return {
+                todoData: newArr
+            }
+        });
     }
+
 
     render() {
         return (
