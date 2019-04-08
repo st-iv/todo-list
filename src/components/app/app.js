@@ -40,20 +40,28 @@ export default class App extends Component {
             label: text,
             important: false,
             id: this.maxId++
-        }
+        };
 
+        //add element in array
         this.setState(({todoData}) => {
             const newArr = [
                 ...todoData,
                 newItem
-            ]
+            ];
 
             return {
                 todoData: newArr
             }
         });
-    }
+    };
 
+    onToggleImportant = (id) => {
+        console.log('toggle important', id);
+    };
+
+    onToggleDone = (id) => {
+        console.log('toggle Done', id);
+    };
 
     render() {
         return (
@@ -63,7 +71,12 @@ export default class App extends Component {
                     <SearchPanel/>
                     <ItemStatusFilter/>
                 </div>
-                <TodoList todos={this.state.todoData} onDeleted={this.deleteItem}/>
+                <TodoList
+                    todos={this.state.todoData}
+                    onDeleted={this.deleteItem}
+                    onToggleImportant={this.onToggleImportant}
+                    onToggleDone={this.onToggleDone}
+                />
                 <ItemAddForm onItemAdded={this.addItem}/>
             </div>
         )
